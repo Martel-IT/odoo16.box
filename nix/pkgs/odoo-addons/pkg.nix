@@ -6,58 +6,59 @@
 }:
 let
   vendor = fetchFromGitHub {                                   # (1)
-    owner = "martel-innovate";
-    repo = "odoo-box-16";
-    rev = "vendor-addons-27-jan-2025";
-    sha256 = "sha256-LdPHfeVhivd9FD6Y05mibILZh9ZecioeWqfehsQf13Y=";
+    owner = "Martel-IT";
+    repo = "odoo16.box";
+    rev = "vendor-addons-04-Mar-2025";
+    sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
   };
+  
   hr-timesheet-overtime = fetchFromGitHub {
     owner = "Martel-IT";
     repo = "custom_hr_timesheet_overtime";
     rev = "Latest";          # (2)
-    sha256 = "sha256-3xwt+FXYQupdgA0BGxbVilIOGQ+LAtgzVBAd+Kf/bAs=";
+    sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
   };
   timesheets-by-employee = fetchFromGitHub {
     owner = "Martel-IT";
     repo = "custom_timesheets_by_employee";
     rev = "Latest";          # (2)
-    sha256 = "sha256-xQ9ZIgOKn98CJ2rFLyo8NLaiVISdW1QSERjVltn4GxQ=";
+    sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
   };
   download-attachments = fetchFromGitHub {
     owner = "Martel-IT";
     repo = "custom_download_attachments";
     rev = "Latest";          # (2)
-    sha256 = "sha256-EgYPTFjtcDGfFm4cKtvWepeaWCPVAYUSm9NB5tlRGos=";
+    sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
   };
   hr-expense = fetchFromGitHub {
     owner = "Martel-IT";
     repo = "custom_hr_expense";
     rev = "Latest";          # (2)
-    sha256 = "sha256-NumAjnwlvn2qlZQqvTi1Sr3r2t4cnCFl4JbFVHQWtbE=";
+    sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
   };
   custom-menu-style = fetchFromGitHub {
     owner = "Martel-IT";
     repo = "custom_menu_style";
     rev = "Latest";          # (2)
-    sha256 = "sha256-0OkZcRvWmpssJIHXZ+d/EyDxDiyFTRUmLalC5J1G3YY=";
+    sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
   };
   timesheet-sheet-fullwidth = fetchFromGitHub {
     owner = "Martel-IT";
     repo = "custom_timesheet_sheet_fullwidth";
     rev = "v1.0";          # (2)
-    sha256 = "sha256-wxYWUllWnEy1B5cCSn2k/fz5fY/ZqhJLGElW1iHZQBQ=";
+    sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
   };
   custom-expense-limit = fetchFromGitHub {
     owner = "Martel-IT";
     repo = "custom_expense_limit";
     rev = "latest";          # (2)
-    sha256 = "sha256-0Wy9NYlo5VR4Q4/V3bTh05HPZY/8HIlRFvjZpaX/fAQ=";
+    sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
   };
   custom-web = fetchFromGitHub {
     owner = "Martel-IT";
     repo = "custom_expense_limit";
     rev = "latest";          # (2)
-    sha256 = "sha256-0Wy9NYlo5VR4Q4/V3bTh05HPZY/8HIlRFvjZpaX/fAQ=";
+    sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
   };
 in stdenv.mkDerivation rec {
     pname = "odoo-addons";
@@ -71,6 +72,7 @@ in stdenv.mkDerivation rec {
     src-custom-menu-style = custom-menu-style;
     src-timesheet-sheet-fullwidth = timesheet-sheet-fullwidth;
     src-custom-expense-limit = custom-expense-limit;
+    src-custom-web = custom-web;
 
     installPhase = ''
       mkdir -p $out/hr_timesheet_overtime
@@ -79,20 +81,23 @@ in stdenv.mkDerivation rec {
       mkdir -p $out/timesheets_by_employee
       cp -rv ${src-timesheets-by-employee}/. $out/timesheets_by_employee
 
-      mkdir -p $out/timesheets_by_employee
+      mkdir -p $out/download-attachments
       cp -rv ${src-download-attachments}/. $out/download-attachments
 
-      mkdir -p $out/timesheets_by_employee
+      mkdir -p $out/hr-expense
       cp -rv ${src-hr-expense}/. $out/hr-expense
 
-      mkdir -p $out/timesheets_by_employee
+      mkdir -p $out/custom-menu-style
       cp -rv ${src-custom-menu-style}/. $out/custom-menu-style
 
-      mkdir -p $out/timesheets_by_employee
+      mkdir -p $out/timesheet-sheet-fullwidth
       cp -rv ${src-timesheet-sheet-fullwidth}/. $out/timesheet-sheet-fullwidth
 
-      mkdir -p $out/timesheets_by_employee
+      mkdir -p $out/custom-expense-limit
       cp -rv ${src-custom-expense-limit}/. $out/custom-expense-limit
+
+      mkdir -p $out/web
+      cp -rv ${src-custom-web}/. $out/web
 
       cp -rv $src/vendor/addons/* $out
     '';
