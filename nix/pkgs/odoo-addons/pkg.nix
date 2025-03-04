@@ -12,43 +12,49 @@ let
     sha256 = "sha256-LdPHfeVhivd9FD6Y05mibILZh9ZecioeWqfehsQf13Y=";
   };
   hr-timesheet-overtime = fetchFromGitHub {
-    owner = "martel-innovate";
+    owner = "Martel-IT";
     repo = "custom_hr_timesheet_overtime";
     rev = "Latest";          # (2)
     sha256 = "sha256-3xwt+FXYQupdgA0BGxbVilIOGQ+LAtgzVBAd+Kf/bAs=";
   };
   timesheets-by-employee = fetchFromGitHub {
-    owner = "martel-innovate";
+    owner = "Martel-IT";
     repo = "custom_timesheets_by_employee";
     rev = "Latest";          # (2)
     sha256 = "sha256-xQ9ZIgOKn98CJ2rFLyo8NLaiVISdW1QSERjVltn4GxQ=";
   };
   download-attachments = fetchFromGitHub {
-    owner = "martel-innovate";
+    owner = "Martel-IT";
     repo = "custom_download_attachments";
     rev = "Latest";          # (2)
     sha256 = "sha256-EgYPTFjtcDGfFm4cKtvWepeaWCPVAYUSm9NB5tlRGos=";
   };
   hr-expense = fetchFromGitHub {
-    owner = "martel-innovate";
+    owner = "Martel-IT";
     repo = "custom_hr_expense";
     rev = "Latest";          # (2)
     sha256 = "sha256-NumAjnwlvn2qlZQqvTi1Sr3r2t4cnCFl4JbFVHQWtbE=";
   };
   custom-menu-style = fetchFromGitHub {
-    owner = "martel-innovate";
+    owner = "Martel-IT";
     repo = "custom_menu_style";
     rev = "Latest";          # (2)
     sha256 = "sha256-0OkZcRvWmpssJIHXZ+d/EyDxDiyFTRUmLalC5J1G3YY=";
   };
   timesheet-sheet-fullwidth = fetchFromGitHub {
-    owner = "martel-innovate";
+    owner = "Martel-IT";
     repo = "custom_timesheet_sheet_fullwidth";
     rev = "v1.0";          # (2)
     sha256 = "sha256-wxYWUllWnEy1B5cCSn2k/fz5fY/ZqhJLGElW1iHZQBQ=";
   };
   custom-expense-limit = fetchFromGitHub {
-    owner = "martel-innovate";
+    owner = "Martel-IT";
+    repo = "custom_expense_limit";
+    rev = "latest";          # (2)
+    sha256 = "sha256-0Wy9NYlo5VR4Q4/V3bTh05HPZY/8HIlRFvjZpaX/fAQ=";
+  };
+  custom-web = fetchFromGitHub {
+    owner = "Martel-IT";
     repo = "custom_expense_limit";
     rev = "latest";          # (2)
     sha256 = "sha256-0Wy9NYlo5VR4Q4/V3bTh05HPZY/8HIlRFvjZpaX/fAQ=";

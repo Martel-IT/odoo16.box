@@ -4,7 +4,7 @@
 {
     "name": "Web timeline",
     "summary": "Interactive visualization chart to show events in time",
-    "version": "14.0.1.0.0",
+    "version": "16.0.1.1.6",
     "development_status": "Production/Stable",
     "author": "ACSONE SA/NV, "
     "Tecnativa, "
@@ -16,9 +16,20 @@
     "license": "AGPL-3",
     "website": "https://github.com/OCA/web",
     "depends": ["web"],
-    "qweb": ["static/src/xml/web_timeline.xml"],
-    "data": ["views/web_timeline.xml"],
+    "data": [],
+    "demo": ["demo/ir_cron_view.xml"],
     "maintainers": ["tarteo"],
     "application": False,
     "installable": True,
+    "assets": {
+        "web.assets_backend": [
+            "web_timeline/static/src/scss/web_timeline.scss",
+            "web_timeline/static/src/js/timeline_view.js",
+            "web_timeline/static/src/js/timeline_renderer.js",
+            "web_timeline/static/src/js/timeline_controller.esm.js",
+            "web_timeline/static/src/js/timeline_model.js",
+            "web_timeline/static/src/js/timeline_canvas.js",
+            "web_timeline/static/src/xml/web_timeline.xml",
+        ],
+    },
 }

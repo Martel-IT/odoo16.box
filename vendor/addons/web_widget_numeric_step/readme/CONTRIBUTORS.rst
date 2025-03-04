@@ -8,3 +8,5 @@
   * Carlos Roca
 
 * Helly kapatel <helly.kapatel@initos.com>
+* Thanakrit Pintana <thanakrit.p39@gmail.com>
+* Dhara Solanki <dhara.solanki@initos.com>

@@ -4,16 +4,21 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 {
     "name": "Web Disable Export Group",
-    "version": "14.0.1.0.0",
+    "version": "16.0.1.0.0",
     "license": "AGPL-3",
-    "author": "Onestein, " "Tecnativa, " "Odoo Community Association (OCA)",
+    "author": "Onestein, Tecnativa, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/web",
     "category": "Web",
     "depends": ["web"],
     "data": [
         "security/groups.xml",
-        "templates/assets.xml",
-        "templates/tour_assets.xml",
+        "security/ir.model.access.csv",
     ],
     "installable": True,
+    "assets": {
+        "web.assets_backend": [
+            "/web_disable_export_group/static/src/**/*",
+        ],
+        "web.assets_tests": ["/web_disable_export_group/static/tests/*.js"],
+    },
 }

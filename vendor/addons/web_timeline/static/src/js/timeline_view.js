@@ -2,6 +2,7 @@
 /* Odoo web_timeline
  * Copyright 2015 ACSONE SA/NV
  * Copyright 2016 Pedro M. Baeza <pedro.baeza@tecnativa.com>
+ * Copyright 2023 Onestein - Anjeel Haria
  * License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). */
 
 odoo.define("web_timeline.TimelineView", function (require) {
@@ -21,9 +22,13 @@ odoo.define("web_timeline.TimelineView", function (require) {
         return _.isUndefined(value) || _.isNull(value);
     }
 
+    function toBoolDefaultTrue(value) {
+        return isNullOrUndef(value) ? true : utils.toBoolElse(value, true);
+    }
+
     var TimelineView = AbstractView.extend({
         display_name: _lt("Timeline"),
-        icon: "fa-tasks",
+        icon: "fa fa-tasks",
         jsLibs: ["/web_timeline/static/lib/vis-timeline/vis-timeline-graph2d.js"],
         cssLibs: ["/web_timeline/static/lib/vis-timeline/vis-timeline-graph2d.css"],
         config: _.extend({}, AbstractView.prototype.config, {
@@ -31,6 +36,7 @@ odoo.define("web_timeline.TimelineView", function (require) {
             Controller: TimelineController,
             Renderer: TimelineRenderer,
         }),
+        viewType: "timeline",
 
         /**
          * @override
@@ -72,7 +78,9 @@ odoo.define("web_timeline.TimelineView", function (require) {
 
             const colors = this.parse_colors();
             for (const color of colors) {
-                fieldNames.push(color.field);
+                if (!fieldNames.includes(color.field)) {
+                    fieldNames.push(color.field);
+                }
             }
 
             if (dependency_arrow) {
@@ -82,10 +90,6 @@ odoo.define("web_timeline.TimelineView", function (require) {
             const mode = attrs.mode || attrs.default_window || "fit";
             const min_height = attrs.min_height || 300;
 
-            const current_window = {
-                start: new moment(),
-                end: new moment().add(24, "hours"),
-            };
             if (!isNullOrUndef(attrs.quick_create_instance)) {
                 this.quick_create_instance = "instance." + attrs.quick_create_instance;
             }
@@ -100,17 +104,21 @@ odoo.define("web_timeline.TimelineView", function (require) {
             this.rendererParams.model = this.modelName;
             this.rendererParams.view = this;
             this.rendererParams.options = this._preapre_vis_timeline_options(attrs);
-            this.rendererParams.current_window = current_window;
+            this.rendererParams.can_create = toBoolDefaultTrue(attrs.create);
+            this.rendererParams.can_update = toBoolDefaultTrue(attrs.edit);
+            this.rendererParams.can_delete = toBoolDefaultTrue(attrs.delete);
             this.rendererParams.date_start = date_start;
             this.rendererParams.date_stop = date_stop;
             this.rendererParams.date_delay = date_delay;
             this.rendererParams.colors = colors;
             this.rendererParams.fieldNames = fieldNames;
+            this.rendererParams.default_group_by = attrs.default_group_by;
             this.rendererParams.min_height = min_height;
             this.rendererParams.dependency_arrow = dependency_arrow;
             this.rendererParams.fields = fields;
             this.loadParams.modelName = this.modelName;
             this.loadParams.fieldNames = fieldNames;
+            this.loadParams.default_group_by = attrs.default_group_by;
             this.controllerParams.open_popup_action = open_popup_action;
             this.controllerParams.date_start = date_start;
             this.controllerParams.date_stop = date_stop;
@@ -121,35 +129,15 @@ odoo.define("web_timeline.TimelineView", function (require) {
 
         _preapre_vis_timeline_options: function (attrs) {
             return {
-                groupOrder: this.group_order,
-                orientation: "both",
+                groupOrder: "order",
+                orientation: {axis: "both", item: "top"},
                 selectable: true,
                 multiselect: true,
                 showCurrentTime: true,
-                stack: isNullOrUndef(attrs.stack)
-                    ? true
-                    : utils.toBoolElse(attrs.stack, true),
+                stack: toBoolDefaultTrue(attrs.stack),
                 margin: attrs.margin ? JSON.parse(attrs.margin) : {item: 2},
                 zoomKey: attrs.zoomKey || "ctrlKey",
             };
-        },
-
-        /**
-         * Order function for groups.
-         * @param {Object} grp1
-         * @param {Object} grp2
-         * @returns {Integer}
-         */
-        group_order: function (grp1, grp2) {
-            // Display non grouped elements first
-            if (grp1.id === -1) {
-                return -1;
-            }
-            if (grp2.id === -1) {
-                return 1;
-            }
-
-            return grp1.content.localeCompare(grp2.content);
         },
 
         /**

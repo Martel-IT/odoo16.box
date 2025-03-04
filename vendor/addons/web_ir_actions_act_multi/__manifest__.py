@@ -8,11 +8,16 @@
     "name": "Web Actions Multi",
     "summary": "Enables triggering of more than one action on ActionManager",
     "category": "Web",
-    "version": "14.0.1.0.0",
+    "version": "16.0.1.0.0",
     "license": "LGPL-3",
     "author": "Modoolar, " "CorporateHub, " "Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/web",
     "depends": ["web"],
-    "data": ["security/ir.model.access.csv", "views/web_ir_actions_act_multi.xml"],
+    "data": ["security/ir.model.access.csv"],
+    "assets": {
+        "web.assets_backend": [
+            "web_ir_actions_act_multi/static/src/**/*.esm.js",
+        ],
+    },
     "installable": True,
 }

@@ -6,7 +6,7 @@
 
 {
     "name": "web_m2x_options",
-    "version": "14.0.1.1.0",
+    "version": "16.0.1.1.3",
     "category": "Web",
     "author": "initOS GmbH,"
     "ACSONE SA/NV, "
@@ -16,7 +16,6 @@
     "website": "https://github.com/OCA/web",
     "license": "AGPL-3",
     "depends": ["web"],
-    "data": ["views/view.xml"],
-    "qweb": ["static/src/xml/base.xml"],
+    "assets": {"web.assets_backend": ["web_m2x_options/static/src/components/*"]},
     "installable": True,
 }

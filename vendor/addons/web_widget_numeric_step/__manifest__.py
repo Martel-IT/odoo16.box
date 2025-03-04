@@ -5,14 +5,17 @@
 {
     "name": "Web Widget Numeric Step",
     "category": "web",
-    "version": "14.0.1.0.0",
+    "version": "16.0.1.1.4",
     "author": "GRAP, Tecnativa, " "Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "website": "https://github.com/OCA/web",
     "depends": ["web"],
-    "data": ["view/assets.xml"],
-    "qweb": ["static/src/xml/numeric_step.xml"],
-    "demo": ["demo/res_users_view.xml"],
+    "assets": {
+        "web.assets_backend": [
+            "web_widget_numeric_step/static/src/*",
+        ],
+    },
+    "maintainers": ["rafaelbn", "yajo"],
     "auto_install": False,
     "installable": True,
 }
