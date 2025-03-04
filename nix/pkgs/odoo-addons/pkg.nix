@@ -6,30 +6,65 @@
 }:
 let
   vendor = fetchFromGitHub {                                   # (1)
-    owner = "c0c0n3";
-    repo = "odoo.box";
-    rev = "vendor-addons-08-mar-2024";
-    sha256 = "sha256-CdB3uEDXN25nI71ur+8DFVt9L36Cg7Kn76/2EXLVy4g=";
+    owner = "martel-innovate";
+    repo = "odoo-box-16";
+    rev = "vendor-addons-27-jan-2025";
+    sha256 = "sha256-LdPHfeVhivd9FD6Y05mibILZh9ZecioeWqfehsQf13Y=";
   };
   hr-timesheet-overtime = fetchFromGitHub {
     owner = "martel-innovate";
-    repo = "hr_timesheet_overtime";
-    rev = "b8f82871acf13f93ebe1a3d5b294832dba71de50";          # (2)
-    sha256 = "sha256-EI4KIiHTywUqW3HYp+nn43qaqpBxQK91WFkHGgym16A=";
+    repo = "custom_hr_timesheet_overtime";
+    rev = "Latest";          # (2)
+    sha256 = "sha256-3xwt+FXYQupdgA0BGxbVilIOGQ+LAtgzVBAd+Kf/bAs=";
   };
   timesheets-by-employee = fetchFromGitHub {
     owner = "martel-innovate";
-    repo = "timesheets_by_employee";
-    rev = "934c519d63c5fad4c19055e930cad4e21e6940fc";          # (2)
-    sha256 = "sha256-GuRROvxTx2qxtlI2N9dA0R6pxmg17O/kN6xbDpnWl7U=";
+    repo = "custom_timesheets_by_employee";
+    rev = "Latest";          # (2)
+    sha256 = "sha256-xQ9ZIgOKn98CJ2rFLyo8NLaiVISdW1QSERjVltn4GxQ=";
+  };
+  download-attachments = fetchFromGitHub {
+    owner = "martel-innovate";
+    repo = "custom_download_attachments";
+    rev = "Latest";          # (2)
+    sha256 = "sha256-EgYPTFjtcDGfFm4cKtvWepeaWCPVAYUSm9NB5tlRGos=";
+  };
+  hr-expense = fetchFromGitHub {
+    owner = "martel-innovate";
+    repo = "custom_hr_expense";
+    rev = "Latest";          # (2)
+    sha256 = "sha256-NumAjnwlvn2qlZQqvTi1Sr3r2t4cnCFl4JbFVHQWtbE=";
+  };
+  custom-menu-style = fetchFromGitHub {
+    owner = "martel-innovate";
+    repo = "custom_menu_style";
+    rev = "Latest";          # (2)
+    sha256 = "sha256-0OkZcRvWmpssJIHXZ+d/EyDxDiyFTRUmLalC5J1G3YY=";
+  };
+  timesheet-sheet-fullwidth = fetchFromGitHub {
+    owner = "martel-innovate";
+    repo = "custom_timesheet_sheet_fullwidth";
+    rev = "v1.0";          # (2)
+    sha256 = "sha256-wxYWUllWnEy1B5cCSn2k/fz5fY/ZqhJLGElW1iHZQBQ=";
+  };
+  custom-expense-limit = fetchFromGitHub {
+    owner = "martel-innovate";
+    repo = "custom_expense_limit";
+    rev = "latest";          # (2)
+    sha256 = "sha256-0Wy9NYlo5VR4Q4/V3bTh05HPZY/8HIlRFvjZpaX/fAQ=";
   };
 in stdenv.mkDerivation rec {
     pname = "odoo-addons";
-    version = "1.0.0-odoo-14.0";
+    version = "1.0.0-odoo-16.0";
 
     src = vendor;
     src-hr-timesheet-overtime = hr-timesheet-overtime;
     src-timesheets-by-employee = timesheets-by-employee;
+    src-download-attachments = download-attachments;
+    src-hr-expense = hr-expense;
+    src-custom-menu-style = custom-menu-style;
+    src-timesheet-sheet-fullwidth = timesheet-sheet-fullwidth;
+    src-custom-expense-limit = custom-expense-limit;
 
     installPhase = ''
       mkdir -p $out/hr_timesheet_overtime
@@ -37,6 +72,21 @@ in stdenv.mkDerivation rec {
 
       mkdir -p $out/timesheets_by_employee
       cp -rv ${src-timesheets-by-employee}/. $out/timesheets_by_employee
+
+      mkdir -p $out/timesheets_by_employee
+      cp -rv ${src-download-attachments}/. $out/download-attachments
+
+      mkdir -p $out/timesheets_by_employee
+      cp -rv ${src-hr-expense}/. $out/hr-expense
+
+      mkdir -p $out/timesheets_by_employee
+      cp -rv ${src-custom-menu-style}/. $out/custom-menu-style
+
+      mkdir -p $out/timesheets_by_employee
+      cp -rv ${src-timesheet-sheet-fullwidth}/. $out/timesheet-sheet-fullwidth
+
+      mkdir -p $out/timesheets_by_employee
+      cp -rv ${src-custom-expense-limit}/. $out/custom-expense-limit
 
       cp -rv $src/vendor/addons/* $out
     '';
