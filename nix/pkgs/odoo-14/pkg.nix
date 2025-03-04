@@ -26,9 +26,9 @@ in poetry2nix.mkPoetryApplication rec {
   src = fetchzip {
     url = "https://repo.martel-consulting.ch/odoo16-martel.tar.gz";
     pname = "${pname}-${version}";
-    hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+    hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
   };  
-  
+
                                                            # (2)
   projectDir = src;
   pyproject = ./pyproject.toml;
