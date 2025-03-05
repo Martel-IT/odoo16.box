@@ -57,7 +57,7 @@ let
   custom-web = fetchFromGitHub {
     owner = "Martel-IT";
     repo = "custom_web";
-    rev = "latest";          # (2)
+    rev = "Latest";          # (2)
     sha256 = "sha256-M1V+/+6U7lZfQx2lpLo7Ru6mxC9IlVTzJwXzZbjQoJk=";
   };
 in stdenv.mkDerivation rec {
