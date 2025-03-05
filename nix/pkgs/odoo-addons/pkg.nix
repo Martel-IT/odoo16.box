@@ -9,56 +9,56 @@ let
     owner = "Martel-IT";
     repo = "odoo16.box";
     rev = "vendor-addons-04-Mar-2025";
-    sha256 = "sha256-odoo16box=";
+    sha256 = "sha256-Rxl66FZu1bCXtZ4Edbg7HNlyamyLx7dT/Me9bKdc+R4=";
   };
   
   hr-timesheet-overtime = fetchFromGitHub {
     owner = "Martel-IT";
     repo = "custom_hr_timesheet_overtime";
     rev = "Latest";          # (2)
-    sha256 = "sha256-hrovertime=";
+    sha256 = "sha256-3xwt+FXYQupdgA0BGxbVilIOGQ+LAtgzVBAd+Kf/bAs=";
   };
   timesheets-by-employee = fetchFromGitHub {
     owner = "Martel-IT";
     repo = "custom_timesheets_by_employee";
     rev = "Latest";          # (2)
-    sha256 = "sha256-timesheetsbyemplpoyee=";
+    sha256 = "sha256-xQ9ZIgOKn98CJ2rFLyo8NLaiVISdW1QSERjVltn4GxQ=";
   };
   download-attachments = fetchFromGitHub {
     owner = "Martel-IT";
     repo = "custom_download_attachments";
     rev = "Latest";          # (2)
-    sha256 = "sha256-downloadattachmentsAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+    sha256 = "sha256-EgYPTFjtcDGfFm4cKtvWepeaWCPVAYUSm9NB5tlRGos=";
   };
   hr-expense = fetchFromGitHub {
     owner = "Martel-IT";
     repo = "custom_hr_expense";
     rev = "Latest";          # (2)
-    sha256 = "sha256-hrexpenseAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+    sha256 = "sha256-NumAjnwlvn2qlZQqvTi1Sr3r2t4cnCFl4JbFVHQWtbE=";
   };
   custom-menu-style = fetchFromGitHub {
     owner = "Martel-IT";
     repo = "custom_menu_style";
     rev = "Latest";          # (2)
-    sha256 = "sha256-menustyleAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+    sha256 = "sha256-0OkZcRvWmpssJIHXZ+d/EyDxDiyFTRUmLalC5J1G3YY=";
   };
   timesheet-sheet-fullwidth = fetchFromGitHub {
     owner = "Martel-IT";
     repo = "custom_timesheet_sheet_fullwidth";
     rev = "v1.0";          # (2)
-    sha256 = "sha256-fullwidthAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+    sha256 = "sha256-wxYWUllWnEy1B5cCSn2k/fz5fY/ZqhJLGElW1iHZQBQ=";
   };
   custom-expense-limit = fetchFromGitHub {
     owner = "Martel-IT";
     repo = "custom_expense_limit";
     rev = "latest";          # (2)
-    sha256 = "sha256-expenselimitAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+    sha256 = "sha256-0Wy9NYlo5VR4Q4/V3bTh05HPZY/8HIlRFvjZpaX/fAQ=";
   };
   custom-web = fetchFromGitHub {
     owner = "Martel-IT";
     repo = "custom_web";
     rev = "latest";          # (2)
-    sha256 = "sha256-customwebAAAAAAAAAAAAA=";
+    sha256 = "sha256-M1V+/+6U7lZfQx2lpLo7Ru6mxC9IlVTzJwXzZbjQoJk=";
   };
 in stdenv.mkDerivation rec {
     pname = "odoo-addons";
