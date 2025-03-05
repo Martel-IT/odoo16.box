@@ -9,14 +9,14 @@ let
     owner = "Martel-IT";
     repo = "odoo16.box";
     rev = "vendor-addons-04-Mar-2025";
-    sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+    sha256 = "sha256-EgYPTFjtcDGfFm4cKtvWepeaWCPVAYUSm9NB5tlRGos=";
   };
   
   hr-timesheet-overtime = fetchFromGitHub {
     owner = "Martel-IT";
     repo = "custom_hr_timesheet_overtime";
     rev = "Latest";          # (2)
-    sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+    sha256 = "sha256-EgYPTFjtcDGfFm4cKtvWepeaWCPVAYUSm9NB5tlRGos=";
   };
   timesheets-by-employee = fetchFromGitHub {
     owner = "Martel-IT";
